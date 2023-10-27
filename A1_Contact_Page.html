@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <style>
+        body {
+            background-color: purple;
+        }
+
+        .header {
+            color: aqua;
+            text-align: center;
+        }
+
+        .footer {
+            color: aqua;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .nav {
+            background-color: #333;
+            color: rgb(255, 255, 255);
+            text-align: center;
+            padding: 10px;
+        }
+
+        .nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav ul li a:hover {
+            color: aqua;
+        }
+
+        label {
+            color: aqua;
+        }
+        </style>
+    </head>
+    <body>
+        <div class = "header">
+            <h1>Contact Us!</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="file:///Users/emmanuelakpalu/Desktop/INST-377/A1_Home_Page.html">Home</a></li>
+                <li><a href="file:///Users/emmanuelakpalu/Desktop/INST-377/A1_Games_Page.html">Games</a></li>
+                <li><a href="file:///Users/emmanuelakpalu/Desktop/INST-377/A1_Contact_Page.html">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class = "main">
+            <form id="Form" onsubmit="return validateForm()">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <br>
+                <label for="datePicker">Date:</label>
+                <input type="date" id="datePicker" name="datePicker" required>
+                <br>
+                <label for="concern">Concerns:</label>
+                <textarea id="concern" name="concern" rows="5" cols="50" required></textarea>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <script>
+            function validateForm() {
+                var concerns = document.getElementById('concern').value;
+                
+                //damn i didn't think I would use regular expressions in this class. 326 baby.
+                var regex = /[^a-zA-Z0-9\s]/;
+                
+                if (regex.test(concerns)) {
+                    alert("Please remove special characters from the Concerns field.");
+                    return false;
+                }
+
+                window.location.href = "file:///Users/emmanuelakpalu/Desktop/INST-377/A1_Success_Form_Page.html";
+
+                return false;
+            }
+        </script>
+        <div class = "footer">
+            Fun Fact: The name “sandwich” comes from an 18th-century aristocrat called the 4th Earl of Sandwich.
+        </div>
+    </body>
+</html>

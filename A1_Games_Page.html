@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <style>
+            body {
+            background-color: purple;
+            }   
+
+            .header {
+            color: aqua;
+            text-align: center;
+            }
+
+            .footer {
+                color: aqua;
+                text-align: center;
+                padding: 10px;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+
+            .nav {
+                background-color: #333;
+                color: rgb(255, 255, 255);
+                text-align: center;
+                padding: 10px;
+            }
+
+            .nav ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .nav ul li {
+                display: inline;
+                margin-right: 20px;
+            }
+
+            .nav ul li a {
+                text-decoration: none;
+                color: white;
+                font-weight: bold;
+            }
+
+            .nav ul li a:hover {
+                color: aqua;
+            }
+
+            .left {
+            color: aqua;
+            float: left;
+            border: 1px solid black;
+            margin: 10px 0;
+            padding: 10px;
+            width: 40%;
+            }
+
+            .right {
+            color: aqua;
+            float: right;
+            border: 1px solid black;
+            margin: 10px 0;
+            padding: 10px;
+            width: 40%;
+            }
+
+            label {
+                color: aqua; 
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class = "header">
+            <h1>Games</h1>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="file:///Users/emmanuelakpalu/Desktop/INST-377/A1_Home_Page.html">Home</a></li>
+                <li><a href="file:///Users/emmanuelakpalu/Desktop/INST-377/A1_Games_Page.html">Games</a></li>
+                <li><a href="file:///Users/emmanuelakpalu/Desktop/INST-377/A1_Contact_Page.html">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <div class = "main">
+            <form id="gameForm">
+                <label for="choice">Choose:</label>
+                <select id="choice" name="choice">
+                    <option value="Rock">Rock</option>
+                    <option value="Paper">Paper</option>
+                    <option value="Scissors">Scissors</option>
+                </select>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <div class = "subsection left">
+            You Chose: <span id="userChoice"></span>
+        </div>
+
+        <div class = "subsection right">
+            Computer Chose: <span id="computerChoice"></span>
+        </div>
+
+        <script>
+        const gameForm = document.getElementById('gameForm');
+        const userChoiceElement = document.getElementById('userChoice');
+        const computerChoiceElement = document.getElementById('computerChoice');
+
+        gameForm.addEventListener('submit', function (x) {
+            x.preventDefault(); 
+
+            const userChoice = document.getElementById('choice').value;
+
+            const computerChoices = ['Rock', 'Paper', 'Scissors'];
+            const computerChoice = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+            userChoiceElement.textContent = userChoice;
+            computerChoiceElement.textContent = computerChoice;
+
+            let resultMessage = '';
+            let backgroundColor = '';
+
+            if (computerChoice === 'Spock') {
+                resultMessage = 'You Lose';
+                backgroundColor = 'red';
+            } else if (userChoice === computerChoice) {
+                resultMessage = 'Tie';
+                backgroundColor = 'blue';
+            } else if (
+                (userChoice === 'Rock' && computerChoice === 'Scissors') ||
+                (userChoice === 'Paper' && computerChoice === 'Rock') ||
+                (userChoice === 'Scissors' && computerChoice === 'Paper')
+            ) {
+                resultMessage = 'You Win';
+                backgroundColor = 'green';
+            } else {
+                resultMessage = 'You Lose';
+                backgroundColor = 'red';
+            }
+
+            alert(resultMessage);
+
+            document.body.style.backgroundColor = backgroundColor;
+        });
+        </script>
+
+        <div class = "footer">
+            Fun Fact: It would take you approximately 18 months to walk all the way along The Great Wall of China.
+        </div>
+    </body>
+</html>
